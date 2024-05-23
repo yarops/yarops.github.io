@@ -1,0 +1,274 @@
+@import "styles/settings/__settings";
+
+.nav {
+  width: 100%;
+  background-color: var(--app-bg);
+  border-bottom: 1px solid var(--app-color-border-dark);
+}
+
+.navIcon {
+  margin-left: auto;
+  height: 60%;
+}
+
+.navSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+.navToggler {
+  font-size: 1.2em;
+  background: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--app-color-accent);
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  border: 0;
+  border-right: 1px solid var(--app-color-border-dark);
+  transition: background-color 0.5s;
+
+  &[disabled] {
+    svg {
+      fill: #000;
+    }
+  }
+
+  svg {
+    fill: #000;
+    transform: translateY(2px);
+    transition: fill 0.5s;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: var(--app-color-primary);
+
+    svg {
+      fill: #fff;
+    }
+  }
+}
+
+.navSearch {
+  flex-grow: 0;
+  height: 100%;
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+
+    @media (min-width: 480px) {
+      justify-content: flex-end;
+    }
+  }
+
+  input {
+    font-size: 0.845em;
+    background-color: #8c73b463;
+    border: 0;
+    height: 100%;
+    padding: 0 2rem;
+
+    &:focus,
+    &:focus-visible {
+      border: 0;
+      background-color: rgb(255 255 255 / 0.1);
+      outline: 0;
+    }
+  }
+
+  button {
+    font-size: 1.2em;
+    background: none;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--app-color-accent);
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    border: 0;
+    transition: background-color 0.5s;
+
+    &[disabled] {
+      svg {
+        fill: #000;
+      }
+    }
+
+    svg {
+      fill: #000;
+      transform: translateY(2px);
+      transition: fill 0.5s;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: var(--app-color-primary);
+
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+.navSearchResults {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100vw;
+  background-color: white;
+  padding: 1.5em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  border-top: solid 5px $color-primary;
+  margin-right: -1rem;
+  z-index: 999;
+
+  @media (min-width: 480px) {
+    width: 30em;
+    margin-right: 0;
+  }
+
+  [data-search-is-active="true"] & {
+    display: block;
+  }
+
+  p {
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: -0.5em 0;
+  }
+
+  a {
+    display: block;
+    color: $color-gray-800;
+    text-decoration: none;
+    padding: 0.5em;
+    margin: 0 -0.5em;
+    &:focus {
+      outline: 2px solid $color-blue-500;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.navMenu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media screen and (min-width: 768px){
+    display: flex;
+    align-items: center;
+    flex-grow: 0;
+  }
+
+  li {
+    position: relative;
+    z-index: 1;
+    margin: 0 0.25em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+
+      a {
+        background-color: var(--app-color-primary);
+      }
+    }
+
+    &:hover {
+      & > a {
+        color: $color-primary;
+      }
+
+      > .navSubMenu {
+        display: block;
+      }
+    }
+
+    & > .navSubMenu {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      padding: 0.5em 0.8em;
+    }
+
+    .navSubMenu {
+      ul {
+        top: 0;
+        left: 100%;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: var(--app-color-text);
+    font-size: clamp(0.813rem, 0.669rem + 0.44vw, 1rem);
+    line-height: 30px;
+    padding: 1rem;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  .navSubMenu {
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    list-style: none;
+    background-color: #fff;
+    padding: 0;
+
+    li {
+      background-color: white;
+      margin: 0;
+
+      a {
+        font-size: 1rem;
+        padding: 0.3em;
+      }
+    }
+  }
+}

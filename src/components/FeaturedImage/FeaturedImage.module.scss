@@ -1,0 +1,16 @@
+@use "sass:math";
+@import "styles/settings/__settings";
+
+.featuredImage {
+  margin: 0 0 0.75rem;
+
+  div {
+    position: relative;
+  }
+
+  img {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+}

@@ -1,0 +1,58 @@
+@import "styles/settings/__settings";
+
+.sideToggler {
+  font-size: 1.2em;
+  background: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--app-color-accent);
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  border: 0;
+  border-right: 1px solid var(--app-color-border-dark);
+  transition: background-color 0.5s;
+
+  &[data-active=true] {
+    transform: translateX(-100%);
+
+    @media screen and (min-width: 420px){
+      transform: translateX(0);
+    }
+  }
+
+  @media screen and (min-width: 420px){
+    transform: translateX(0);
+  }
+
+  @media screen and (min-width: 1200px){
+    display: none;
+  }
+
+
+  &[disabled] {
+    svg {
+      fill: #000;
+    }
+  }
+
+  svg {
+    fill: #000;
+    transform: translateY(2px);
+    transition: fill 0.5s;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: var(--app-color-primary);
+
+    svg {
+      fill: #fff;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+@import "styles/settings/__settings";
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  padding: 1rem 0;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  min-width: 100vw;
+
+  @media screen and (min-width: 420px){
+    min-width: 300px;
+  }
+}
+
+.sidebarBrand {
+  padding: 0 1.75rem 2rem;
+}
+
+.sideWidget {
+  padding: 2rem 1.75rem;
+}
+
+.sideWidgetTitle {
+  // 1
+}
+
+.sidebarSocials {
+  padding: auto 1.75rem 2rem;
+}
+
+.sideMenu {
+  display: block;
+  list-style: none;
+  padding: 0 1.75rem;
+  margin: 0;
+
+  li {
+    padding: 4px 0;
+  }
+
+  a {
+    text-align: start;
+    color: var(--app-color-link);
+    text-decoration: none;
+    font-family: $font-family-default;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.15;
+    word-break: break-word;
+    white-space: pre-line;
+    position: relative;
+    vertical-align: sub;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    min-height: var(--nav-nested-item-height);
+    gap: 8px;
+  }
+
+  svg {
+    fill: var(--app-color-link);
+  }
+}
+
+.sidePosts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+
+  figure {
+    margin: 0;
+    padding: 1px;
+    background: var(--app-border-gradient);
+  }
+
+  img {
+    display: block;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,74 @@
+@import "styles/settings/__settings";
+
+.btn {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  min-height: 2rem;
+  box-sizing: border-box;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 14px 17px;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  font: 700 0.875rem / 1 $font-family-default;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition: 0.5s ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+
+  svg {
+    position: relative;
+    margin-left: 12px;
+    fill: #fff;
+    transition: 0.5s ease-in-out;
+  }
+
+  &--primary {
+    position: relative;
+    z-index: 0;
+    min-height: initial;
+    background: var(--app-color-primary);
+    color: var(--app-color-bg);
+
+    svg {
+      fill: var(--app-color-bg);
+    }
+
+    &:hover {
+      background-color: var(--app-color-primary);
+    }
+  }
+
+  &--accent {
+    position: relative;
+    z-index: 0;
+    min-height: initial;
+    background: var(--app-color-accent);
+    color: var(--app-color-bg);
+
+    svg {
+      fill: var(--app-color-bg);
+    }
+
+    &:hover {
+      background-color: var(--app-color-primary);
+    }
+  }
+
+  &--icon {
+    padding: 9px;
+
+    svg {
+      margin: 0;
+    }
+  }
+}

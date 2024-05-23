@@ -1,0 +1,100 @@
+@import "styles/settings/__settings";
+
+.postCardVertical {
+  position: relative;
+  padding: 0.5em;
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+  background: linear-gradient(to right, rgba(50, 94, 255, 0.5), rgba(12, 42, 147, 0.5), rgba(152, 174, 255, 0.5));
+  padding: 1px;
+
+  & > a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      h3 {
+        color: $color-primary;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.postCardVerticalInner {
+  background-color: var(--app-bg);
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.postCardVerticalThumb {
+  max-width: 160px;
+  margin: 0;
+}
+
+.postCardVerticalTitle {
+  margin: 0;
+  font-family: $font-family-headings;
+  font-size: 0.725rem;
+  font-weight: 300;
+  color: var(--app-color-headings);
+  text-transform: uppercase;
+}
+
+.postCardVerticalContent {
+  font-size: 1.25em;
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  gap: 0.25rem;
+
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.postCardVerticalButton {
+  background-color: var(--app-color-accent);
+  padding: 0.25rem 1rem;
+  text-transform: lowercase;
+  font-size: 0.725rem;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  transition: 0.5s ease-in-out;
+  margin-top: auto;
+
+  svg {
+    position: relative;
+    top: 1px;
+    transition: 0.5s ease-in-out;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--app-color-primary);
+    color: #fff;
+    text-decoration: none;
+    
+    svg {
+      fill: #fff;
+    }
+  }
+}
+
+.postCardVerticalMetadata {
+  margin: -0.8em -0.8em 0.4em;
+}

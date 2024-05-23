@@ -1,0 +1,93 @@
+@import "styles/settings/__settings";
+
+.footer {
+  width: 100%;
+  border-top: 1px solid var(--app-color-border-dark);
+}
+
+.footerMenu {
+  margin: 2rem 0;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.footerMenuColumns {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 -2em;
+
+  @media (min-width: 480px) {
+    justify-content: center;
+  }
+
+  & > li {
+    max-width: 15em;
+    margin: 2em;
+  }
+}
+
+.footerMenuTitle {
+  display: inline-block;
+  color: var(--app-color-headings);
+  text-decoration: none;
+  margin-bottom: 1.4em;
+  margin-top: 0;
+}
+
+.footerMenuItems {
+  li {
+    line-height: 1.15;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    display: block;
+    overflow: hidden;
+    color: $color-gray-400;
+    text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.875rem;
+
+    @media (hover: hover) {
+      &:hover {
+        color: $color-primary;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.footerLegal {
+  color: $color-gray-400;
+  background-color: $color-gray-900;
+  padding: 0.8rem 0;
+  margin: 0;
+
+  p {
+    font-size: 0.9em;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+.footerContainer {
+  position: relative;
+  display: grid;
+
+  @media screen and (min-width: 768px){
+    grid-template-columns: auto max-content;
+  }
+}
+
+.footerImage {
+  // 1
+}

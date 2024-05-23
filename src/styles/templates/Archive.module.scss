@@ -1,0 +1,30 @@
+@import "styles/settings/__settings";
+
+.archiveDescription {
+  text-align: center;
+  font-size: 1.1em;
+  color: $color-gray-600;
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+
+  @media screen and (min-width: 290px){
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 520px){
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width: 768px){
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

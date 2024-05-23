@@ -1,0 +1,92 @@
+@import "styles/settings/__settings";
+@import "style.css";
+@import "global";
+
+:root{
+  --app-bg: #111827;
+  --app-bg-default: #282c34;
+  --app-bg-dark: #141520;
+  --app-color-link: #fcb5f2;
+  --app-color-border-dark: #423b63;
+  --app-color-accent: #faa71b;
+  --app-color-primary: #8C73B4;
+  --app-color-primary-light: #d0c5e2;
+  --app-color-primary-dark: #573f7e;
+  --app-color-headings: #fff;
+  --app-color-text: #ccc5e7;
+  --app-border-gradient: linear-gradient(to right, rgba(50, 94, 255, 0.5), rgba(12, 42, 147, 0.5), rgba(152, 174, 255, 0.5));
+}
+
+.light:root {
+  --app-bg: #fff;
+  --app-bg-default: #282c34;
+  --app-bg-dark: #f7f7f7;
+  --app-color-link: #fcb5f2;
+  --app-color-border-dark: rgba(227,232,237,1.00);
+  --app-color-accent: #faa71b;
+  --app-color-primary: #8C73B4;
+  --app-color-primary-light: #d0c5e2;
+  --app-color-primary-dark: #573f7e;
+  --app-color-text: #473f65;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $font-family-default;
+  color: var(--app-color-text);
+}
+
+body {
+  background-color: var(--app-bg-dark);
+}
+
+p {
+  line-height: 1.6;
+  margin: 1.2em 0;
+}
+
+ul {
+  padding-left: 1.2em;
+}
+
+a {
+  color: $color-primary;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input {
+  &[type="text"],
+  &[type="search"],
+  &[type="email"] {
+    outline-offset: 0;
+    padding: 0.5em 0.8em;
+  }
+}
+
+figcaption {
+  color: $color-gray-500;
+  font-size: 0.9em;
+  text-align: center;
+  font-style: italic;
+  margin-top: 0.6em;
+}
+
+.sr-only {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 0;
+  height: 0;
+}

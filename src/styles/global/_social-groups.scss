@@ -1,0 +1,39 @@
+.social-groups {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0.25rem;
+
+  &__item-inner {
+    background-color: var(--app-bg);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  &__item {
+    display: flex;
+    line-height: 1;
+    background: var(--app-border-gradient);
+    background-origin: border-box;
+    vertical-align: top;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    border-radius: 5px;
+    padding: 1px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      outline: none;
+      background: #3d5886;
+      color: #fff;
+    }
+  }
+}

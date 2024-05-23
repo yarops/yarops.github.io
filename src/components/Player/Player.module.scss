@@ -1,0 +1,49 @@
+.player {
+  &Content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 0;
+
+    @media screen and (min-width: 768px){
+      grid-template-columns: minmax(0, 1fr) 167px;
+      gap: 1rem;
+    }
+  }
+
+  &Area {
+    position: relative;
+    flex: 1;
+  }
+
+  &__promo {
+    flex: 0 0 167px;
+    display: none;
+
+    @media screen and (min-width: 768px){
+      display: block;
+    }
+  }
+
+  &Footer {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 15px;
+
+    @media screen and (min-width: 420px){
+      flex-flow: row nowrap;
+    }
+
+    >div:first-child {
+      flex: 1;
+    }
+
+    >*:last-child {
+      margin-left: auto;
+
+      @media screen and (min-width: 420px){
+        margin-left: initial;
+      }
+    }
+  }
+}
