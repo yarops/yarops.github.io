@@ -65,6 +65,10 @@ export const QUERY_ALL_POSTS_ARCHIVE = gql`
               id
             }
           }
+          rating {
+            count
+            total
+          }
         }
       }
     }
@@ -212,6 +216,10 @@ export const QUERY_POST_BY_SLUG = gql`
         flashType
         shortDescription
       }
+      rating {
+        count
+        total
+      }
     }
   }
 `;
@@ -256,6 +264,10 @@ export const QUERY_POSTS_BY_CATEGORY_ID_ARCHIVE = gql`
               sizes
               id
             }
+          }
+          rating {
+            count
+            total
           }
         }
       }

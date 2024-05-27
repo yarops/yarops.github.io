@@ -14,9 +14,12 @@ import 'styles/globals.scss';
 import 'styles/wordpress.scss';
 import variables from 'styles/_variables.module.scss';
 import { useState } from 'react';
+import { ApolloProvider } from "@apollo/client";
+import { getApolloClient } from 'lib/apollo-client';
 
 function App({ Component, pageProps = {}, metadata, recentPosts, categories, menus, sidePosts }) {
   const [isNavOpen, setisNavOpen] = useState();
+  const apolloClient = getApolloClient();
 
   function toggleNav() { 
     setisNavOpen(!isNavOpen);
@@ -34,12 +37,14 @@ function App({ Component, pageProps = {}, metadata, recentPosts, categories, men
   });
 
   return (
-    <SiteContext.Provider value={site}>
-      <SearchProvider>
-        <NextNProgress height={4} color={variables.progressbarColor} />
-        <Component {...pageProps} />
-      </SearchProvider>
-    </SiteContext.Provider>
+    <ApolloProvider client={apolloClient}>
+      <SiteContext.Provider value={site}>
+        <SearchProvider>
+          <NextNProgress height={4} color={variables.progressbarColor} />
+          <Component {...pageProps} />
+        </SearchProvider>
+      </SiteContext.Provider>
+    </ApolloProvider>
   );
 }
 

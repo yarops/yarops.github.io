@@ -20,6 +20,18 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
+    background-color: var(--app-color-accent);
+    z-index: -1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 120px;
+    height: 3px;
+    border-radius: 2px;
     background-color: var(--app-color-primary);
     z-index: -1;
   }

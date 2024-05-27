@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { postPathBySlug } from 'lib/posts';
 
 import FeaturedImage from 'components/FeaturedImage';
+import ReactStars from 'react-rating-stars-component';
 
-import { FaMapPin } from 'react-icons/fa';
+import { FaMapPin, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import styles from './PostCard.module.scss';
 
 const PostCard = ({ post, options = {} }) => {
@@ -27,9 +28,11 @@ const PostCard = ({ post, options = {} }) => {
 
   let postCardStyle = styles.postCard;
 
-  if (isSticky) {
-    postCardStyle = `${postCardStyle} ${styles.postCardSticky}`;
+  let rating = 0;
+  if (post.rating.total > 0 && post.rating.count > 0) {
+    rating = post.rating.total / post.rating.count;
   }
+
 
   return (
     <div className={postCardStyle}>
@@ -45,6 +48,19 @@ const PostCard = ({ post, options = {} }) => {
             srcSet=""
           />
         )}
+        <div className={styles.postCardRating}>
+          <ReactStars
+            count={5}
+            value={rating}
+            size={18}
+            color={'rgb(255 255 255 / 50%)'}
+            activeColor={'#faa71b'}
+            edit={false}
+            emptyIcon={<FaStar/>}
+            halfIcon={<FaStarHalfAlt/>}
+            filledIcon={<FaStar/>}
+          />          
+        </div>
         <Link href={postPathBySlug(slug)}>
           <h3
             className={styles.postCardTitle}

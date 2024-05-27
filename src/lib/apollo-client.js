@@ -19,6 +19,17 @@ export function getApolloClient() {
  */
 
 export function _createApolloClient() {
+  const defaultOptions = {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'ignore',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  }
+
   return new ApolloClient({
     link: new HttpLink({
       uri: removeLastTrailingSlash(process.env.WORDPRESS_GRAPHQL_ENDPOINT),
@@ -33,5 +44,6 @@ export function _createApolloClient() {
         },
       },
     }),
+    defaultOptions: defaultOptions,
   });
 }

@@ -44,7 +44,8 @@
     }
 
     &:hover {
-      background-color: var(--app-color-primary);
+      background-color: var(--app-color-accent);
+      color: var(--app-color-text-inverse);
     }
   }
 

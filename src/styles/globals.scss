@@ -3,25 +3,26 @@
 @import "global";
 
 :root{
-  --app-bg: #111827;
+  --app-bg: #121418;
   --app-bg-default: #282c34;
   --app-bg-dark: #141520;
-  --app-color-link: #fcb5f2;
+  --app-color-link: #ffccf8;
   --app-color-border-dark: #423b63;
   --app-color-accent: #faa71b;
   --app-color-primary: #8C73B4;
   --app-color-primary-light: #d0c5e2;
   --app-color-primary-dark: #573f7e;
   --app-color-headings: #fff;
-  --app-color-text: #ccc5e7;
-  --app-border-gradient: linear-gradient(to right, rgba(50, 94, 255, 0.5), rgba(12, 42, 147, 0.5), rgba(152, 174, 255, 0.5));
+  --app-color-text: #e0dbf5;
+  --app-color-text-inverse: #000;
+  --app-border-gradient: linear-gradient(to right, rgba(50, 94, 255, 0.5), rgba(12, 42, 147, 0.5), rgba(255, 164, 152, 0.5));
 }
 
 .light:root {
   --app-bg: #fff;
   --app-bg-default: #282c34;
   --app-bg-dark: #f7f7f7;
-  --app-color-link: #fcb5f2;
+  --app-color-link: #ffccf8;
   --app-color-border-dark: rgba(227,232,237,1.00);
   --app-color-accent: #faa71b;
   --app-color-primary: #8C73B4;
@@ -44,6 +45,7 @@ body {
 
 body {
   background-color: var(--app-bg-dark);
+  background: #000000; background-image: radial-gradient(at 17.0% 26.0%, hsl(259, 77%, 28%) 0px, transparent 50%),radial-gradient(at 21.0% 65.0%, #000a5f 0px, transparent 50%),radial-gradient(at 0.2% 5.8%, #903847 0px, transparent 50%),radial-gradient(at 61.0% 43.0%, #191c6b 0px, transparent 50%),radial-gradient(at 36.0% 72.0%, #753da5 0px, transparent 50%)
 }
 
 p {
@@ -55,8 +57,8 @@ ul {
   padding-left: 1.2em;
 }
 
-a {
-  color: $color-primary;
+a:not[class] {
+  color: var(--app-color-link);
 }
 
 img {

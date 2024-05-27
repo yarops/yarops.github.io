@@ -6,7 +6,7 @@
   color: inherit;
   text-align: left;
   text-decoration: none;
-  background: linear-gradient(to right, rgba(50, 94, 255, 0.5), rgba(12, 42, 147, 0.5), rgba(152, 174, 255, 0.5));
+  background: var(--app-border-gradient);
   background-size: 100%;
   transition: background-size 1s ease 0s, opacity 500ms ease 0s;
   padding: 1px;
@@ -15,7 +15,7 @@
   a {
     display: flex;
     align-items: center;
-    color: inherit;
+    color: var(--app-color-link);
     text-decoration: none;
     padding: 0 0.75rem 0.75rem;
 
@@ -32,7 +32,7 @@
 
     &:hover {
       h3 {
-        color: $color-primary;
+        color: var(--app-color-accent);
       }
     }
   }
@@ -41,8 +41,11 @@
     background-size: 200%;
 
     .postCardArrow {
+      background-color: var(--app-color-accent);
+
       svg {
         left: 3px;
+        fill: var(--app-color-text-inverse);
       }
     }
   }
@@ -63,9 +66,9 @@
     position: relative;
     left: 1px;
     transform: rotate(-90deg);
-    transition: left 0.2s ease-in-out;
     width: 1rem;
     height: 1rem;
+    transition: 0.5s ease-in-out;
   }
 }
 
@@ -74,12 +77,16 @@
   height: 100%;
 }
 
+.postCardRating {
+  padding: 0 0.75rem;
+}
+
 .postCardTitle {
   margin: 0;
   font-family: $font-family-headings;
   font-size: 0.675rem;
   font-weight: 300;
-  color: var(--app-color-headings);
+  color: var(--app-color-link);
   text-transform: uppercase;
 }
 

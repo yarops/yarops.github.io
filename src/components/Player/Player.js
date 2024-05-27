@@ -15,8 +15,6 @@ const Player = ({ options }) => {
 			return;
 		}
 
-    console.log('Fire use effect');
-
     if (!gameInitialized) {
       addGameScrollListeners();
     } else {
@@ -65,7 +63,6 @@ const Player = ({ options }) => {
 	}
 
   function addGameScrollListeners() {
-    console.log('added');
 		window.addEventListener('scroll', gameInit, { once: true, passive: true });
 		window.addEventListener('click', gameInit, { once: true, passive: true });
 		window.addEventListener('mousemove', gameInit, { once: true, passive: true });
@@ -76,7 +73,6 @@ const Player = ({ options }) => {
 	}
 
 	function removeGameScrollListeners() {
-    console.log('removed');
 		window.removeEventListener('scroll', gameInit, false);
 		window.removeEventListener('click', gameInit, false);
 		window.removeEventListener('mousemove', gameInit, false);
@@ -85,10 +81,8 @@ const Player = ({ options }) => {
 	}
 
   function gameInit() {
-    console.log(gameInitialized);
 		if (gameInitialized === false) {
 			setGameInitialized(true);
-      console.log('game init');
 			gameLoader();
 
 			setTimeout(() => {
@@ -186,7 +180,6 @@ const Player = ({ options }) => {
 		iframe.classList.add('hidden');
 
 		newWidth = flash.offsetWidth;
-    console.log(newWidth);
 
 		ratio = parseInt(initWidth) / parseInt(initHeight);
 		newHeight = newWidth / ratio;
