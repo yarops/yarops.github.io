@@ -18,7 +18,16 @@ import Breadcrumbs from 'components/Breadcrumbs';
 import styles from 'styles/pages/Page.module.scss';
 
 export default function Page({ page, breadcrumbs }) {
-  const { title, metaTitle, description, slug, content, featuredImage, children } = page;
+  const { 
+    title, 
+    metaTitle, 
+    description, 
+    slug, 
+    content, 
+    featuredImage, 
+    children,
+    csOptionsPage
+  } = page;
 
   const { metadata: siteMetadata = {} } = useSite();
 
@@ -68,35 +77,47 @@ export default function Page({ page, breadcrumbs }) {
           </Header>
         </Section>
 
-        <Content>
-          <Section>
-              <div
-                className={styles.content}
-                dangerouslySetInnerHTML={{
-                  __html: content,
-                }}
-              />
-          </Section>
+        <Section>
+          <Content>
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{
+                __html: csOptionsPage.shortDescription,
+              }}
+            />
+          </Content>
+        </Section>
 
-          {hasChildren && (
-            <Section className={styles.sectionChildren}>
-                <aside>
-                  <p className={styles.childrenHeader}>
-                    <strong>{title}</strong>
-                  </p>
-                  <ul>
-                    {children.map((child) => {
-                      return (
-                        <li key={child.id}>
-                          <Link href={child.uri}>{child.title}</Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </aside>
-            </Section>
-          )}
-        </Content>
+        <Section>
+          <Content>
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{
+                __html: content,
+              }}
+            />
+          </Content>
+        </Section>
+
+        {hasChildren && (
+          <Section>
+            <aside>
+              <p className={styles.childrenHeader}>
+                <strong>{title}</strong>
+              </p>
+              <ul>
+                {children.map((child) => {
+                  return (
+                    <li key={child.id}>
+                      <Link href={child.uri}>{child.title}</Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </aside>
+          </Section>
+        )}
+        
       </Container>
     </Layout>
   );

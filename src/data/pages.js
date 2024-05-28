@@ -125,6 +125,9 @@ export const QUERY_PAGE_BY_URI = gql`
       slug
       title
       uri
+      csOptionsPage {
+        shortDescription
+      }
     }
   }
 `;
@@ -190,6 +193,9 @@ export const QUERY_PAGE_BY_SLUG = gql`
       databaseId
       title
       slug
+      csOptionsPage {
+        shortDescription
+      }
     }
   }
 `;

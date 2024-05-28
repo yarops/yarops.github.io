@@ -1,29 +1,32 @@
 import { Helmet } from 'react-helmet';
+import Head from 'next/head';
+import { useMutation } from '@apollo/client';
+import { useState, useEffect } from 'react';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import ReactStars from 'react-rating-stars-component';
 
-import { getPostBySlug, getRecentPosts, getRelatedPosts } from 'lib/posts';
+import useSite from 'hooks/use-site';
+import usePageMetadata from 'hooks/use-page-metadata';
+
+import { MUTATION_CREATE_RATING } from 'data/create-rating';
+import { getPostBySlug, getAllPosts, getRelatedPosts } from 'lib/posts';
 import { categoryPathBySlug } from 'lib/categories';
 import { formatDate } from 'lib/datetime';
 import { ArticleJsonLd } from 'lib/json-ld';
 import { helmetSettingsFromMetadata } from 'lib/site';
-import useSite from 'hooks/use-site';
-import usePageMetadata from 'hooks/use-page-metadata';
 
 import Layout from 'components/Layout';
 import Header from 'components/Header';
 import Section from 'components/Section';
 import Container from 'components/Container';
 import Content from 'components/Content';
-
-import styles from 'styles/pages/Post.module.scss';
 import Player from 'components/Player';
 import PostCard from 'components/PostCard';
 import SectionTitle from 'components/SectionTitle';
 import CommentForm from 'components/CommentForm';
-import ReactStars from 'react-rating-stars-component';
-import { MUTATION_CREATE_RATING } from 'data/create-rating';
-import { useMutation } from '@apollo/client';
-import { useState, useEffect } from 'react';
+
+import styles from 'styles/pages/Post.module.scss';
 
 export default function Post({ post, socialImage, related }) {
   const {
@@ -65,6 +68,8 @@ export default function Post({ post, socialImage, related }) {
 
   const helmetSettings = helmetSettingsFromMetadata(metadata);
 
+  const isServer = typeof window === 'undefined' ? true : false;
+
 
   /**
    * Rating
@@ -78,29 +83,29 @@ export default function Post({ post, socialImage, related }) {
   const [createRating, {data}] = useMutation(MUTATION_CREATE_RATING);
 
   useEffect(() => {
-    
+
+    // Initial render stars rating
     const test = (localStorage.getItem('canVote' + post.databaseId) !== 'false');
     setTotal(post.rating.total);
     setCount(post.rating.count);
     setCanVote(test);
     setStarsKey(Math.random());
-
+    
     if (data) {
       setTotal(data.createRating.rating.total);
       setCount(data.createRating.rating.count);
       setCanVote(false);
       localStorage.setItem('canVote' + post.databaseId, 'false');
       setStarsKey(Math.random());
+      Notify.success('Voted success!');
     }
 
-  }, [data, canVote]);
+  }, [data, post]);
 
    /**
    * Handle the comment form submission.
    */
    async function handleRating(newVote) {
-  
-    // Create the comment and await the status.
     await createRating({ 
       variables: { 
         vote: newVote,
@@ -111,6 +116,12 @@ export default function Post({ post, socialImage, related }) {
 
   return (
     <Layout>
+      {!isServer && (
+        <Head>
+          <title>{helmetSettings.title}</title>
+        </Head> 
+      )}
+
       <Helmet {...helmetSettings} />
 
       <ArticleJsonLd post={post} siteTitle={siteMetadata.title} />
@@ -193,7 +204,6 @@ export default function Post({ post, socialImage, related }) {
             </div>
           </div>
         </Section>
-
         
       </Container>
 
@@ -243,8 +253,7 @@ export async function getStaticPaths() {
   // Tip: this can be customized to use data or analytitcs to determine the
   // most popular posts and render those instead
 
-  const { posts } = await getRecentPosts({
-    count: process.env.POSTS_PRERENDER_COUNT, // Update this value in next.config.js!
+  const { posts } = await getAllPosts({
     queryIncludes: 'index',
   });
 

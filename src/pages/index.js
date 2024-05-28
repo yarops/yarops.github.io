@@ -22,7 +22,13 @@ import SectionTitle from 'components/SectionTitle';
 export default function Home({ page, posts, pagination, topPosts }) {
   // const { title, description } = metadata;
 
-  const { title, metaTitle, description, content } = page;
+  const { 
+    title, 
+    metaTitle, 
+    description, 
+    content,
+    csOptionsPage
+  } = page;
 
   const { metadata } = usePageMetadata({
     metadata: {
@@ -73,11 +79,45 @@ export default function Home({ page, posts, pagination, topPosts }) {
 
         <Section>
           <Content>
-              <img 
-                src={homeImage.src}
-                alt={title}
-                style={{float: 'right'}}
-              />
+            <img 
+              src={homeImage.src}
+              alt={title}
+              style={{float: 'right'}}
+            />
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{
+                __html: csOptionsPage.shortDescription,
+              }}
+            />
+          </Content>
+        </Section>
+
+        <Section>
+          <SectionTitle>
+            All games
+          </SectionTitle>
+          <ul className={styles.posts}>
+            {posts.map((post) => {
+              return (
+                <li key={post.slug}>
+                  <PostCard post={post} />
+                </li>
+              );
+            })}
+          </ul>
+          {pagination && (
+            <Pagination
+              addCanonical={false}
+              currentPage={pagination?.currentPage}
+              pagesCount={pagination?.pagesCount}
+              basePath={pagination?.basePath}
+            />
+          )}
+        </Section>
+
+        <Section>
+          <Content>
               <div
                 className={styles.content}
                 dangerouslySetInnerHTML={{
@@ -85,29 +125,6 @@ export default function Home({ page, posts, pagination, topPosts }) {
                 }}
               />
           </Content>
-        </Section>
-    
-        <Section>
-            <SectionTitle>
-              All games
-            </SectionTitle>
-            <ul className={styles.posts}>
-              {posts.map((post) => {
-                return (
-                  <li key={post.slug}>
-                    <PostCard post={post} />
-                  </li>
-                );
-              })}
-            </ul>
-            {pagination && (
-              <Pagination
-                addCanonical={false}
-                currentPage={pagination?.currentPage}
-                pagesCount={pagination?.pagesCount}
-                basePath={pagination?.basePath}
-              />
-            )}
         </Section>
 
       </Container>

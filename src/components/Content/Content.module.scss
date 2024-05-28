@@ -34,7 +34,6 @@
   
   h6 {
     font-size: 1.15rem;
-    color: #575757;
   }
 
   h1,
@@ -55,6 +54,19 @@
   img {
     display: block;
     margin: 0 auto;
+  }
+
+  a:not([class]) {
+    color: var(--app-color-link);
+    border-bottom: 1px dashed var(--app-color-link);
+    transition: 0.2s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      border-bottom-color: transparent;
+    }
   }
 }
 
